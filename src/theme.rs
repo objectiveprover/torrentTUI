@@ -82,6 +82,7 @@ impl Theme {
         }
     }
 
+    // Ad-hoc patch so the colors work on a light terminal
     pub const fn system_light() -> Theme {
         Theme {
             primary: Color::Cyan,
@@ -93,8 +94,8 @@ impl Theme {
             text: Color::Black,
             text_dim: Color::Gray,
             muted: Color::Gray,
-            bg_element: Color::Indexed(236),
-            selection_bg: Color::White,
+            bg_element: Color::Indexed(255),
+            selection_bg: Color::Rgb(255, 255, 255),
             progress: [
                 Color::Red,
                 Color::Rgb(255, 165, 0),
