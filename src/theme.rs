@@ -82,6 +82,29 @@ impl Theme {
         }
     }
 
+    pub const fn system_light() -> Theme {
+        Theme {
+            primary: Color::Cyan,
+            accent: Color::Magenta,
+            success: Color::Green,
+            warning: Color::Yellow,
+            error: Color::Red,
+            info: Color::Blue,
+            text: Color::Black,
+            text_dim: Color::Gray,
+            muted: Color::Gray,
+            bg_element: Color::Indexed(236),
+            selection_bg: Color::White,
+            progress: [
+                Color::Red,
+                Color::Rgb(255, 165, 0),
+                Color::Yellow,
+                Color::LightGreen,
+                Color::Green,
+            ],
+        }
+    }
+
     /// The progress-column colour for a completion percentage. Thresholds match
     /// the pre-theming gradient, and `system` reproduces it exactly.
     pub fn progress_color(&self, percent: f64) -> Color {
@@ -200,6 +223,11 @@ pub static THEMES: LazyLock<Vec<ThemeEntry>> = LazyLock::new(|| {
         id: "system",
         name: "System",
         theme: Theme::system(),
+    });
+    themes.push(ThemeEntry {
+        id: "system_light",
+        name: "System Light",
+        theme: Theme::system_light(),
     });
     themes.extend(PALETTES.iter().map(|p| ThemeEntry {
         id: p.id,
